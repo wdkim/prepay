@@ -1,0 +1,40 @@
+{% extends "prepay/base.html" %}
+
+
+{% block content %}
+
+<h2>Proposal</h2>
+<p>
+Individuals with an idea for some product often have the potential to make it a reality. However, it is a difficult process because practical hindrances, such as lack of knowledge about how marketable the product will be, often outweigh the driving force for producing the product. Connections and resources are two absolute necessities that generally determine if an idea will take shape. Our project will facilitate the procurement of both, and thus allow for greater creativity and business for the mass.
+</p>
+
+<p>
+We are planning to create a pre-selling website using Django, which will be different from the traditional online shopping website. Sellers will be able to post their ideas/design for a product before they produce anything, and set a funding goal (i.e. how much they need to become willing to produce the good). Buyers will then be able to select products they are willing to buy. Deposits from the seller and the buyer (to show commitment) will be held in escrow, and if the funding goal is reached by the set deadline then the seller will go ahead and produce the good. Once the good is produced and delivered the seller will be paid in full.
+</p>
+
+<p>
+Main features of the website will include:<br/>
+<ul>
+	<li>Catalog of products </li>
+	<ul><li>with search and sorting functions</li></ul>
+	<li>Product pages</li>
+	<ul><li>product details, price, funding goal, status of production(if have reached the goal), comments, Q&A, ratings, reviews</li></ul>
+	<li>Seller profiles</li>
+	<ul><li>credibility rating, list of buyers, current status of products</li></ul>
+	<li>Buyer profiles</li>
+	<ul><li>credibility rating, current status of goods bought</li></ul>
+</ul>
+</p>
+
+<h2>Design Docs</h2>
+<a href="/prepay/img/20130309_153320.jpg">Whiteboard from 3/10 meeting</a><br/>
+<a href="http://yuml.me/25ef974f">Class Diagram</a><br/>
+<a href="#">State Diagram</a><br/>
+<a href="https://docs.google.com/drawings/d/1IO-tM5lFOWm6WcnJYZuMkSKJCmmiPlXuQgVQi0s5GUg">Sequence Diagram: Seller</a><br/>
+<a href="https://docs.google.com/drawings/d/1aI-ofAkYAOVLmbl6OuJQvZ_1vtTynHzuVI7NPJSnHkI">Sequence Diagram: Buyer</a><br/>
+
+{% endblock %}
+
+
+
+

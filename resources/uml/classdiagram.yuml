@@ -1,0 +1,11 @@
+// prepay class diagram
+[note: I think yUML looks pretty good!{bg:cornsilk}]
+[User|+firstName;+lastName;|+login();+logout()]<-[Seller|+reputation]
+[User]<-[Buyer]
+[Seller]<>-1..*>[Product]
+[Product]1-<>1[Category]
+[Listing]++1-1>[Escrow]
+[Listing]++1-1>[Seller]
+[Listing]<>1-*>[Buyer]
+[Listing]++1-[Product]
+[Bank|transactionHistory]
