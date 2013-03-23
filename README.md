@@ -1,7 +1,7 @@
 <pre>
 
 To get this to work in your enivironment:
-- update paths in settings.py
+- in settings.py, update BASE_PATH and database settings
 
 Here's what I added to my apache httpd.conf:
 

@@ -2,6 +2,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+BASE_PATH='/Users/mike/emory/cs370'
 
 ADMINS = (
     ('Daniel Kim', 'wdkim@emory.edu'),
@@ -49,7 +50,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/Users/mike/emory/cs370/prepay/media/'
+MEDIA_ROOT = BASE_PATH + '/prepay/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -60,7 +61,8 @@ MEDIA_URL = '/prepay/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/Users/mike/emory/cs370/prepay/static/'
+#STATIC_ROOT = '/Users/mike/emory/cs370/prepay/static/'
+STATIC_ROOT = BASE_PATH + '/prepay/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -71,11 +73,11 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/mike/emory/cs370/prepay/static/',
-    '/Users/mike/emory/cs370/prepay/static/img',
-    '/Users/mike/emory/cs370/prepay/static/js',
-    '/Users/mike/emory/cs370/prepay/static/css',
-    '/Users/mike/emory/cs370/prepay/media',
+    BASE_PATH + '/prepay/static/',
+    BASE_PATH + '/prepay/static/img',
+    BASE_PATH + '/prepay/static/js',
+    BASE_PATH + '/prepay/static/css',
+    BASE_PATH + '/prepay/media',
 )
 
 # List of finder classes that know how to find static files in
@@ -115,7 +117,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/Users/mike/emory/cs370/prepay/templates",
+    BASE_PATH + "/prepay/templates",
 )
 
 INSTALLED_APPS = (
