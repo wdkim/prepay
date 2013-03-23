@@ -1,0 +1,33 @@
+{% extends "prepay/base.html" %}
+
+{% block content %}
+
+<h2>Detailed view of a listing</h2>
+
+{% if listing %}
+<table>
+	<tr>
+		<td valign="top">
+			<img src="{{ listing.product.get_picture_url }}" width="200" style="border:none; padding-right:8px; float:left;">
+		</td>
+		<td>
+			<b>Listing Name:</b> {{ listing.name }}</span><br/>
+			<b>Listing Description:</b> {{ listing.description }}<br/>
+			<b>Product Description:</b> {{ listing.product.description }}<br/>
+			<b>Seller:</b> {{ listing.seller.name }}<br/>
+			<b>Categories:</b> {% for c in listing.product.categories.all %} {{ c.name }}, {% endfor %}<br/>
+			<b>Created Date:</b> {{listing.created_at}}<br/>
+		</td>
+	</tr>
+</table>	
+
+{% else %}
+hmm... we seem not to find that listing
+{% endif %}
+
+
+{% endblock %}
+
+
+
+

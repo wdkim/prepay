@@ -16,6 +16,13 @@ a:active {color:#6699FF; text-decoration: none;}
 	font-size: 36px;
 }
 
+#nav {
+	position: relative;
+	padding: 10px;
+	font-size: 14px;
+}
+
+
 #content {
 	position: relative;
 	padding: 10px;

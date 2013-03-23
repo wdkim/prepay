@@ -1,3 +1,8 @@
+<pre>
+
+To get this to work in your enivironment:
+- update paths in settings.py
+
 Here's what I added to my apache httpd.conf:
 
 # config for prepay django app
@@ -11,3 +16,6 @@ WSGIScriptAlias /prepay /Users/mike/emory/cs370/prepay/prepay/wsgi.py
 Alias /prepay/css /Users/mike/emory/cs370/prepay/static/css
 Alias /prepay/js /Users/mike/emory/cs370/prepay/static/js
 Alias /prepay/img /Users/mike/emory/cs370/prepay/static/img
+
+
+</pre>
