@@ -19,6 +19,7 @@ def register(request):
             username1 = request.POST.get('username')
             if not User.objects.filter(username = username1).exists():
                 acttype = request.POST.get('account_type')
+                print "username = " + new_data['username']
                 if acttype == 'Seller':
                     u = Seller.objects.create_user(new_data['username'], new_data['email'], new_data['password'])
                 elif acttype == 'Buyer':
@@ -70,7 +71,6 @@ Listing.objects.filter(product__category__exact=cat_id)
 def browse_category(request, category_id):
     category = Category.objects.filter(pk=category_id)
     listings_by_category = Listing.objects.filter(product__categories__exact=category_id)
-    print 'category? ' + category[0].name
     context = Context({
         'category': category[0],
         'listings_by_category': listings_by_category,

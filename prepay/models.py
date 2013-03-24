@@ -54,7 +54,7 @@ class Seller(User):
     objects = UserManager() ###Jennifer
     products = models.ManyToManyField(Product) #todo: filter by owner
     #products = product_set.all()
-    bank_account = models.ForeignKey(BankAccount)
+    #bank_account = models.ForeignKey(BankAccount)
     name = models.CharField(max_length=60)
     
     #we might want to check out https://github.com/dcramer/django-ratings
@@ -69,7 +69,7 @@ class Buyer(User):
     rating = models.IntegerField(choices=CHOICES, null=True, blank=True) 
 #####Jennifer above
 
-    bank_account = models.ForeignKey(BankAccount)
+    #bank_account = models.ForeignKey(BankAccount)
     name = models.CharField(max_length=60)
 
 class Listing(models.Model):
