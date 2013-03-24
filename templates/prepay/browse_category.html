@@ -4,10 +4,10 @@
 
 {% block content %}
 
-<h2>Browse Listings</h2>
+<h2>{{ category.name }} Listings</h2>
 
-{% if all_listings %}
-	{% for listing in all_listings %}
+{% if listings_by_category %}
+	{% for listing in listings_by_category %}
 	<p>
 		<a href="{% url 'listing_detail' listing.pk %}"><img src="{{ listing.product.get_picture_url }}" width="150" align="left" style="border:none; padding-right:8px;"></a>
 		<a href="{% url 'listing_detail' listing.pk %}">{{ listing.name }}</a><br/>
