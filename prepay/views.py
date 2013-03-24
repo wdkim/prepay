@@ -43,7 +43,7 @@ def about(request):
 '''
 todo: 
 refactor this to support browse by different criteria e.g. category
-for now, created redundant browse_by_category
+for now, created redundant browse_category
 '''
 def browse(request):
     all_listings = Listing.objects.all().order_by('-created_at')
@@ -75,7 +75,7 @@ def browse_category(request, category_id):
         'category': category[0],
         'listings_by_category': listings_by_category,
     })
-    return render(request, 'prepay/browse_category.html', context)
+    return render(request, 'prepay/category.html', context)
 
 def listing_detail(request, listing_id):
     # return HttpResponse("You're looking at the detailed view of listing %s." % listing_id)

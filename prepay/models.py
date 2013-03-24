@@ -24,7 +24,7 @@ class Product(models.Model):
     def __unicode__(self):
         return self.name
 
-class Account(models.Model):
+class BankAccount(models.Model):
     name = models.CharField(max_length=50)
     
     #might be a better way:
@@ -35,25 +35,27 @@ class Account(models.Model):
         return self.name
     
 
-
 '''
 I'm implementing these user classes, possibly just for version 0
 convenience.  We need to reconcile this with using the Admin site
 for users, roles, permissions, etc.
 '''
-class User(models.Model):
+'''
+class PrePayUser(User, models.Model):
 
-    account = models.ForeignKey(Account)
+    bank_account = models.ForeignKey(BankAccount)
     name = models.CharField(max_length=60)
     
     def __unicode__(self):
         return self.name
+'''
 class Seller(User):
-    #mike moved to User and made it a foreign key relationship.  Am I misunderstanding your intention?
-    #account = models.OneToOneField(User)   #####Jennifer
+    account = models.OneToOneField(User)   #####Jennifer
     objects = UserManager() ###Jennifer
     products = models.ManyToManyField(Product) #todo: filter by owner
     #products = product_set.all()
+    bank_account = models.ForeignKey(BankAccount)
+    name = models.CharField(max_length=60)
     
     #we might want to check out https://github.com/dcramer/django-ratings
     CHOICES = [(i,i) for i in range(6)]
@@ -61,11 +63,14 @@ class Seller(User):
 
 #####Jennifer from here
 class Buyer(User):
-    #account = models.OneToOneField(User)
+    account = models.OneToOneField(User)
     objects = UserManager() ###Jennifer
     CHOICES = [(i,i) for i in range(6)]
     rating = models.IntegerField(choices=CHOICES, null=True, blank=True) 
 #####Jennifer above
+
+    bank_account = models.ForeignKey(BankAccount)
+    name = models.CharField(max_length=60)
 
 class Listing(models.Model):
     name = models.CharField(max_length=50)
