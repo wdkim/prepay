@@ -47,7 +47,14 @@ convenience.  We need to reconcile this with using the Admin site
 for users, roles, permissions, etc.
 '''
 #####Jennifer deleted custom user
-
+class User(models.Model):
+    #first_name = models.CharField(max_length=30)
+    #last_name = models.CharField(max_length=30)
+    
+    name = models.CharField(max_length=60)
+    
+    def __unicode__(self):
+        return self.name
 class Seller(User):
     account = models.OneToOneField(User)   #####Jennifer 
     objects = UserManager() ###Jennifer
