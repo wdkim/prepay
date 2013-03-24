@@ -2,23 +2,6 @@ from django.db import models
 from decimal import Decimal
 from django.contrib.auth.models import User, UserManager #######Jennifer
 
-'''
-#http://stackoverflow.com/questions/2013835/django-how-should-i-store-a-money-value
-class CurrencyField(models.DecimalField):
-  __metaclass__ = models.SubfieldBase
-
-  def __init__(self, verbose_name=None, name=None, **kwargs):
-    super(CurrencyField, self). __init__(
-        verbose_name=verbose_name, name=name, max_digits=10,
-        decimal_places=2, **kwargs)
-
-  def to_python(self, value):
-    try:
-      return super(CurrencyField, self).to_python(value).quantize(Decimal("0.01"))
-    except AttributeError:
-      return None
-'''
-
 class Category(models.Model):
     name = models.CharField(max_length=50)
     
@@ -41,22 +24,33 @@ class Product(models.Model):
     def __unicode__(self):
         return self.name
 
+class Account(models.Model):
+    name = models.CharField(max_length=50)
+    
+    #might be a better way:
+    #http://stackoverflow.com/questions/2013835/django-how-should-i-store-a-money-value
+    balance = models.DecimalField(max_digits=8, decimal_places=2)
+    
+    def __unicode__(self):
+        return self.name
+    
+
+
 '''
 I'm implementing these user classes, possibly just for version 0
 convenience.  We need to reconcile this with using the Admin site
 for users, roles, permissions, etc.
 '''
-#####Jennifer deleted custom user
 class User(models.Model):
-    #first_name = models.CharField(max_length=30)
-    #last_name = models.CharField(max_length=30)
-    
+
+    account = models.ForeignKey(Account)
     name = models.CharField(max_length=60)
     
     def __unicode__(self):
         return self.name
 class Seller(User):
-    account = models.OneToOneField(User)   #####Jennifer 
+    #mike moved to User and made it a foreign key relationship.  Am I misunderstanding your intention?
+    #account = models.OneToOneField(User)   #####Jennifer
     objects = UserManager() ###Jennifer
     products = models.ManyToManyField(Product) #todo: filter by owner
     #products = product_set.all()
@@ -67,7 +61,7 @@ class Seller(User):
 
 #####Jennifer from here
 class Buyer(User):
-    account = models.OneToOneField(User)
+    #account = models.OneToOneField(User)
     objects = UserManager() ###Jennifer
     CHOICES = [(i,i) for i in range(6)]
     rating = models.IntegerField(choices=CHOICES, null=True, blank=True) 

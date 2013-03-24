@@ -1,37 +1,37 @@
 from django.http import HttpResponse
 from django.template import Context, loader
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.models import User, Group   ####Jennifer
+from django.contrib.auth.models import User, Group  ####Jennifer
 from prepay.forms import RegistrationForm  #####Jennifer
-from django.shortcuts import render_to_response  ###Jennifer
-from django.http import HttpResponseRedirect ####Jennifer
-from django.template import RequestContext ###Jennifer
-from django.db import models ###Jennifer
+from django.shortcuts import render_to_response  # ##Jennifer
+from django.http import HttpResponseRedirect  ####Jennifer
+from django.template import RequestContext  # ##Jennifer
+from django.db import models  # ##Jennifer
 
-from prepay.models import Listing, Category, Seller, Buyer  ###Jennifer edited
+from prepay.models import Listing, Category, Seller, Buyer  # ##Jennifer edited
 
-###Jennifer
+####Jennifer
 def register(request):
     if request.method =='POST':
-		form = RegistrationForm(request.POST)
-		new_data = request.POST.copy()
-		if form.is_valid():
-			username1 = request.POST.get('username')
-			if not User.objects.filter(username = username1).exists():
-				acttype = request.POST.get('account_type')
-				if acttype == 'Seller':
-					u = Seller.objects.create_user(new_data['username'], new_data['email'], new_data['password'])
-				elif acttype == 'Buyer':
-					u = Buyer.objects.create_user(new_data['username'], new_data['email'], new_data['password'])
-				u.groups.add(Group.objects.get(name = acttype))
-				u.is_staff = True
-				u.save()
-				return HttpResponseRedirect('/')
-			else:
-				return render_to_response('prepay/register.html',{'form':form,'error':True}, context_instance=RequestContext(request))
-	else:
-		form = RegistrationForm()
-	return render_to_response('prepay/register.html',{'form':form},context_instance=RequestContext(request))
+        form = RegistrationForm(request.POST)
+        new_data = request.POST.copy()
+        if form.is_valid():
+            username1 = request.POST.get('username')
+            if not User.objects.filter(username = username1).exists():
+                acttype = request.POST.get('account_type')
+                if acttype == 'Seller':
+                    u = Seller.objects.create_user(new_data['username'], new_data['email'], new_data['password'])
+                elif acttype == 'Buyer':
+                    u = Buyer.objects.create_user(new_data['username'], new_data['email'], new_data['password'])
+                u.groups.add(Group.objects.get(name = acttype))
+                u.is_staff = True
+                u.save()
+                return HttpResponseRedirect('/')
+            else:
+                return render_to_response('prepay/register.html',{'form':form,'error':True}, context_instance=RequestContext(request))
+    else:
+        form = RegistrationForm()
+    return render_to_response('prepay/register.html',{'form':form},context_instance=RequestContext(request))
 ####Jennifer
 
 def index(request):
@@ -68,7 +68,7 @@ Listing.objects.filter(product__category__exact=cat_id)
 
 '''
 def browse_category(request, category_id):
-    category = Category.objects.filter(pk = category_id)
+    category = Category.objects.filter(pk=category_id)
     listings_by_category = Listing.objects.filter(product__categories__exact=category_id)
     print 'category? ' + category[0].name
     context = Context({
@@ -78,6 +78,6 @@ def browse_category(request, category_id):
     return render(request, 'prepay/browse_category.html', context)
 
 def listing_detail(request, listing_id):
-    #return HttpResponse("You're looking at the detailed view of listing %s." % listing_id)
+    # return HttpResponse("You're looking at the detailed view of listing %s." % listing_id)
     listing = get_object_or_404(Listing, pk=listing_id)
     return render(request, 'prepay/detail.html', {'listing':listing})
