@@ -1,23 +1,20 @@
-<html>
-<body>
+{% extends "prepay/base.html" %}
 
-<p><a href ="/">Home</a></p>
+{% load url from future %}
 
-<h1>Seller Profile</h1>
+{% block content %}
 
-<p>
+<h2>Seller Profile</h2>
+
 Name: {{user.name}}<br/>
 Rating: {{user.rating}}<br/>
 Username: {{user.username}}<br/>
-Password: <a href= "/admin/password_change/">Change password?</a><br/>
+Password: <a href= "{% url 'admin:password_change' %}">Change password?</a><br/>
 Email: {{user.email}}<br/>
 Products: {{user.products}}<br/>
-<a href = "/admin/prepay/product/add/">Add a new product?</a><br/>
+<!-- http://mitchgt.com/prepay/admin/prepay/listing/add/ -->
+<a href = "{% url 'admin:prepay_product_add' %}">Add a new product?</a><br/>
 <!--Listings: {{listings}}<br/>-->
-<a href = "/admin/prepay/listing/add/">Create a new listing?</a><br/>
+<a href = "{% url 'admin:prepay_listing_add' %}">Create a new listing?</a><br/>
 
-
-</p>
-
-</body>
-</html>
+{% endblock %}

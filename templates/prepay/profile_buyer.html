@@ -1,20 +1,16 @@
-<html>
-<body>
+{% extends "prepay/base.html" %}
 
-<p><a href ="/">Home</a></p>
+{% load url from future %}
 
-<h1>Buyer Profile</h1>
+{% block content %}
 
-<p>
+<h2>Buyer Profile</h2>
+
 <!--Name: {{user.name}}<br/>-->
 Rating: {{user.rating}}<br/>
 Username: {{user.username}}<br/>
-Password: <a href= "/admin/password_change/">Change password?</a><br/>
+Password: <a href= "{% url 'admin:password_change' %}">Change password?</a><br/>
 Email: {{user.email}}<br/>
 <!--Requests: {{user.products}}<br/>-->
 <!--<a href = "/admin/prepay/request/add/">Add a new request?</a><br/>-->
-
-</p>
-
-</body>
-</html>
+{% endblock %}
