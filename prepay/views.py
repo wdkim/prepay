@@ -19,7 +19,6 @@ def register(request):
             username1 = request.POST.get('username')
             if not User.objects.filter(username = username1).exists():
                 acttype = request.POST.get('account_type')
-                print "username = " + new_data['username']
                 if acttype == 'Seller':
                     u = Seller.objects.create_user(new_data['username'], new_data['email'], new_data['password'])
                 elif acttype == 'Buyer':

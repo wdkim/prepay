@@ -35,11 +35,7 @@ class BankAccount(models.Model):
         return self.name
     
 
-'''
-I'm implementing these user classes, possibly just for version 0
-convenience.  We need to reconcile this with using the Admin site
-for users, roles, permissions, etc.
-'''
+
 '''
 class PrePayUser(User, models.Model):
 
@@ -100,8 +96,4 @@ class Escrow(models.Model):
     name = models.CharField(max_length=50)
     def __unicode__(self):
         return self.name
-    
-class Listing(models.Model):
-    name = models.CharField(max_length=50)
-    def __unicode__(self):
-        return self.name
+
