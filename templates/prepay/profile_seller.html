@@ -11,7 +11,14 @@ Rating: {{user.rating}}<br/>
 Username: {{user.username}}<br/>
 Password: <a href= "{% url 'admin:password_change' %}">Change password?</a><br/>
 Email: {{user.email}}<br/>
-Products: {{user.products}}<br/>
+Products: 
+{% for p in user.products.all %}
+    {{ p.name }}
+{% empty %}
+    No products!
+{% endfor %}
+<br/>
+
 <!-- http://mitchgt.com/prepay/admin/prepay/listing/add/ -->
 <a href = "{% url 'admin:prepay_product_add' %}">Add a new product?</a><br/>
 <!--Listings: {{listings}}<br/>-->
