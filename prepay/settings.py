@@ -1,8 +1,10 @@
 # Django settings for prepay project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-BASE_PATH='/Users/mike/emory/cs370/prepay'
+#ROOT_PATH='/home/mmitc3/cs370/prepay'
+ROOT_PATH='/Users/mike/emory/cs370/prepay'
 
 ADMINS = (
     ('Daniel Kim', 'wdkim@emory.edu'),
@@ -17,9 +19,13 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        #'NAME': 'michael.mitchell',                      # Or path to database file if using sqlite3.
+        #'USER': 'michael.mitchell',                      # Not used with sqlite3.
+        #'PASSWORD': 'zxc3zxc',                  # Not used with sqlite3.
         'NAME': 'prepay',                      # Or path to database file if using sqlite3.
         'USER': 'prepay',                      # Not used with sqlite3.
         'PASSWORD': 'prepayme',                  # Not used with sqlite3.
+
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -50,34 +56,34 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = BASE_PATH + '/media/'
+MEDIA_ROOT = os.path.join(ROOT_PATH, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/prepay/media/'
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.  # Example: "/home/media/media.lawrence.com/static/"
 #STATIC_ROOT = '/Users/mike/emory/cs370/prepay/static/'
-STATIC_ROOT = BASE_PATH + '/static/'
+STATIC_ROOT = os.path.join(ROOT_PATH, 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
+
 
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    BASE_PATH + '/static/',
-    BASE_PATH + '/static/img',
-    BASE_PATH + '/static/js',
-    BASE_PATH + '/static/css',
-    BASE_PATH + '/media',
+#    os.path.join(ROOT_PATH, 'static'),
+    os.path.join(ROOT_PATH, 'static/img'),
+    os.path.join(ROOT_PATH, 'static/js'),
+    os.path.join(ROOT_PATH, 'static/css'),
+    os.path.join(ROOT_PATH, 'media'),
 )
 
 # List of finder classes that know how to find static files in
@@ -117,7 +123,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    BASE_PATH + "/templates",
+    os.path.join(ROOT_PATH, 'templates')
 )
 
 INSTALLED_APPS = (
