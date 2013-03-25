@@ -10,6 +10,7 @@ from django.db import models  # ##Jennifer
 
 from prepay.models import Listing, Category, Seller, Buyer  # ##Jennifer edited
 
+'''
 ####Jennifer new
 def profile(request, user_username):
     user = get_object_or_404(User, username=user_username)
@@ -18,6 +19,15 @@ def profile(request, user_username):
     else:
         return render(request, 'prepay/profile_buyer.html', {'user':user})
 #####Jennifer new
+'''
+
+def profile(request, user_username):
+    if(Seller.objects.filter(username = user_username).exists()):
+        user = get_object_or_404(Seller, username=user_username)
+        return render(request, 'prepay/profile_seller.html', {'user':user})
+    else:
+        user = get_object_or_404(Buyer, username=user_username)
+        return render(request, 'prepay/profile_buyer.html', {'user':user})
         
 ####Jennifer
 def register(request):
